@@ -22,6 +22,11 @@
     var instance = this;
     var img = new window.Image();
     img.crossOrigin = '*';
+
+    if (src.substring(0, 4).toLowerCase() === 'data') {
+      img.crossOrigin = null;
+    }
+
     img.onload = function() {
       var context = canvas.getContext('2d');
       canvas.width = width;
