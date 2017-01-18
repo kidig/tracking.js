@@ -1,7 +1,7 @@
 /**
  * tracking - A modern approach for Computer Vision on the web.
  * @author Eduardo Lundgren <edu@rdo.io>
- * @version v1.1.2
+ * @version v1.1.3
  * @link http://trackingjs.com
  * @license BSD
  */
@@ -463,6 +463,11 @@
     var instance = this;
     var img = new window.Image();
     img.crossOrigin = '*';
+
+    if (src.substring(0, 4).toLowerCase() === 'data') {
+      img.crossOrigin = null;
+    }
+
     img.onload = function() {
       var context = canvas.getContext('2d');
       canvas.width = width;
